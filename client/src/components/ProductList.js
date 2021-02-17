@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useQuery } from "react-query";
 import LoadingSpinner from "../components/LoadingSpinner";
+import formatProductPrice from "../utils/formatProductPrice";
 
 export default function ProductList() {
   const { data: products, isLoading } = useQuery('Products', () => axios('/api/products').then(res => res.data.products))
@@ -15,6 +16,8 @@ export default function ProductList() {
 }
 
 function ProductItem({ product }) {
+  const price = formatProductPrice(product)
+
   return (
     <div className="p-4 md:w-1/3">
       <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
@@ -48,7 +51,7 @@ function ProductItem({ product }) {
               </svg>
             </Link>
             <span className="text-gray-500 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-lg pr-3 py-1 border-gray-800 font-bold">
-              {product.price}
+              {price}
             </span>
           </div>
         </div>
