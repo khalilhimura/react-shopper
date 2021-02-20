@@ -1,4 +1,4 @@
-[**Download the React Cheatsheet**](https://bit.ly/react-sheet-2021)
+# React Shopper by Reed Barger
 
 ## System Requirements
 
